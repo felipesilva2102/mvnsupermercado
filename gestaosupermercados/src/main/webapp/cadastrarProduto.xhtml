@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Bem-vindo ao Sistema de Monitoramento de Plantações</title>
+    </h:head>
+    <h:body>
+        <h:form id="formMercadoria" enctype="multipart/form-data">
+
+            <p:panel header="Cadastro de Mercadoria" style="width:600px; margin:auto;">
+
+                <p:messages id="msgs" showDetail="true" />
+
+                <!-- Nome -->
+                <p:outputLabel for="nome" value="Nome:" />
+                <p:inputText id="nome" value="#{produtoMBean.mercadoria.nome}" required="true" label="Nome" 
+                             maxlength="100" style="width:100%" />
+
+                <!-- Descrição -->
+                <p:outputLabel for="descricao" value="Descrição:" style="margin-top:10px;" />
+                <p:inputTextarea id="descricao" value="#{produtoMBean.mercadoria.descricao}" rows="4" cols="30"
+                                 maxlength="500" autoResize="true" style="width:100%" />
+
+                <!-- Preço -->
+                <br/><p:outputLabel for="preco" value="Preço:" style="margin-top:10px;" />
+                <p:inputNumber id="preco" value="#{produtoMBean.mercadoria.preco}" required="true" label="Preço"
+                               minValue="0" maxValue="999999" style="width:100%" />
+
+                <!-- Quantidade em estoque -->
+                <br/><p:outputLabel for="quantidade" value="Quantidade em Estoque:" style="margin-top:10px;" />
+                <p:spinner id="quantidade" value="#{produtoMBean.mercadoria.quantidadeEmEstoque}" min="0" max="10000"
+                           style="width:100%" />
+
+                <!-- Categoria -->
+                <p:outputLabel for="categoria" value="Categoria:" style="margin-top:10px;" />
+                <p:selectOneMenu id="categoria" value="#{produtoMBean.mercadoria.categoria}" required="true" style="width:100%">
+                    <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{produtoMBean.categorias()}" var="cat" itemLabel="#{cat.descricao}" itemValue="#{cat}" />
+                </p:selectOneMenu>
+
+                <!-- Fornecedor -->
+<!--                <p:outputLabel for="fornecedor" value="Fornecedor:" style="margin-top:10px;" />
+                <p:selectOneMenu id="fornecedor" value="#{produtoMBean.mercadoria.fornecedor}" required="true" style="width:100%">
+                    <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{produtoMBean.fornecedores}" var="forn" itemLabel="#{forn.nome}" itemValue="#{forn}" />
+                </p:selectOneMenu>-->
+
+                <!-- Botão salvar -->
+                <p:commandButton value="Salvar Mercadoria" action="#{produtoMBean.salvar}" update="@form" style="margin-top:15px;" />
+
+            </p:panel>
+
+        </h:form>
+
+    </h:body>
+</html>

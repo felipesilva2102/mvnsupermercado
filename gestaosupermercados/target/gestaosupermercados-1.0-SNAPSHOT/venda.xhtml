@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Cadastro de Mercadorias</title>
+    </h:head>
+    <h:body>
+
+        <h:form id="formVenda">
+            <p:panelGrid columns="2">
+                <p:panelGrid columns="2">
+                    
+                </p:panelGrid>
+                <p:panelGrid columns="1">
+                    <p:inputTextarea title=""rows="6" cols="33"/>
+                    <p:inputTextarea rows="6" cols="33"/>
+                    <p:inputTextarea rows="6" cols="33"/>
+                </p:panelGrid>
+                
+                <p:dataTable id="products" value="#{produtoMBean.mercadorias}" var="venda">
+
+                    <p:column headerText="Nº">
+                        #{produtoMBean.contador}
+                    </p:column>
+
+                    <p:column headerText="Produto">
+                        #{venda.nome}
+                    </p:column>
+
+                    <p:column headerText="Preço">
+                        #{venda.preco}
+                    </p:column>
+
+                </p:dataTable>
+            </p:panelGrid>
+        </h:form>
+
+    </h:body>
+</html>
+
