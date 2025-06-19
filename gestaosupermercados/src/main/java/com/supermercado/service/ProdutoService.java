@@ -6,10 +6,12 @@ package com.supermercado.service;
 
 import com.supermercado.entity.Produto;
 import com.supermercado.repository.GenericRepository;
+import com.supermercado.repository.ProdutoRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -20,6 +22,9 @@ public class ProdutoService extends GenericService<Produto, Long> {
     
     @Inject
     private GenericRepository<Produto, Long> repository;
+    
+    @Inject
+    private ProdutoRepository produtoRepository;
 
     public ProdutoService() {
         super(null);
@@ -32,6 +37,10 @@ public class ProdutoService extends GenericService<Produto, Long> {
 
     public List<Produto> findAll() {
         return super.findAll(Produto.class);
+    }
+
+    public Optional<Produto> findByCodigoBarras(String codigoBarras) {
+        return produtoRepository.findByCodigoBarras(codigoBarras);
     }
     
 }

@@ -28,6 +28,10 @@
                 <br/><p:outputLabel for="preco" value="Preço:" style="margin-top:10px;" />
                 <p:inputNumber id="preco" value="#{produtoMBean.mercadoria.preco}" required="true" label="Preço"
                                minValue="0" maxValue="999999" style="width:100%" />
+                
+                <!-- Código de Barras -->
+                <br/><p:outputLabel for="codigoBarras" value="Código de Barras:" style="margin-top:10px;" />
+                <p:inputText id="codigoBarras" value="#{produtoMBean.mercadoria.codigoBarras}" required="true" label="Código de Barras" style="width:100%" />
 
                 <!-- Quantidade em estoque -->
                 <br/><p:outputLabel for="quantidade" value="Quantidade em Estoque:" style="margin-top:10px;" />

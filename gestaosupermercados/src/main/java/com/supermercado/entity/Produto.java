@@ -32,6 +32,8 @@ public class Produto {
     private Long id;
 
     private String nome;
+    
+    private String codigoBarras;
 
     @Column(length = 500)
     private String descricao;

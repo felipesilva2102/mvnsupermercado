@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="jakarta.faces.core">
+
+    <h:head>
+        <title>PDV Mercadinho Santo Antônio</title>
+        <style>
+            .panel-header {
+                background-color: #2b4f81;
+                color: white;
+                text-align: center;
+                padding: 10px;
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .section-label {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .total-section {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .grid-panel {
+                background-color: #f4f4f4;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            .keybinds {
+                font-size: 12px;
+                color: #666;
+            }
+
+            .logo {
+                width: 100px;
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+        <h:form id="pdvForm">
+            <p:panel style="text-align:center; background-color:#f4f8ff; border:1px solid #ccc; margin-bottom:10px;">
+                <h:outputText value="CAIXA ABERTO" 
+                              style="font-size:24px; font-weight:bold; color:#003366;" />
+            </p:panel>
+            <p:panelGrid columns="3">
+                <h:graphicImage value="https://static.wikia.nocookie.net/animeverso/images/0/02/Le%C3%A3o_brabo.png/revision/latest?cb=20230804192844&amp;path-prefix=pt-br" 
+                                alt="Leão Brabo" 
+                                style="max-width: 100%; height: auto;" />
+                <h:panelGrid columns="1" cellpadding="4" id="dados">
+                    <!-- Código de Barras -->
+                    <h:outputText value="CÓDIGO DE BARRAS" style="font-weight:bold; color:#003366;" />
+                    <p:inputText value="#{pdvView.codigoBarras}" style="width:150px; text-align:right; font-weight:bold;">
+                        <p:ajax event="blur" listener="#{pdvView.onValorUnitarioInput}" 
+                                update="@form" process="@this"/>
+                    </p:inputText>
+
+
+                    <!-- Valor Unitário -->
+                    <h:outputText value="VALOR UNITÁRIO" style="font-weight:bold; color:#003366;" />
+                    <p:inputText value="#{pdvView.valorUnitario}" id="valorUnitarioInput"
+                                 style="width:150px; text-align:right; font-weight:bold;" 
+                                 readonly="true">
+                        <f:convertNumber type="number" pattern="'R$' #,##0" />
+                    </p:inputText>
+
+                    <!-- Total do Item -->
+                    <h:outputText value="TOTAL DO ITEM" style="font-weight:bold; color:#003366;" />
+                    <p:inputText value="#{pdvView.totalItem}" id="totalItemInput"
+                                 style="width:150px; text-align:right; font-weight:bold;" 
+                                 readonly="true">
+                        <f:convertNumber type="number" pattern="'R$' #,##0" />
+                    </p:inputText>
+                </h:panelGrid>
+                <p:dataTable var="product" value="#{pdvView.produtos}">
+                    <p:column headerText="Code">
+                        <h:outputText value="#{product.id}" />
+                    </p:column>
+
+                    <p:column headerText="Name">
+                        <h:outputText value="#{product.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Category">
+                        <h:outputText value="#{product.preco}" />
+                    </p:column>
+
+                    <p:column headerText="Quantity">
+                        <h:outputText value="#{product.categoria}" />
+                    </p:column>
+                </p:dataTable>
+
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
