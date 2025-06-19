@@ -5,19 +5,19 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
 
     <persistence-unit name="mvnsupermercado" transaction-type="RESOURCE_LOCAL">
-        <class>com.supermercado.model.Produto</class>
-        <class>com.supermercado.model.CategoriaProduto</class>
-        <class>com.supermercado.model.Fornecedor</class>
-        <class>com.supermercado.model.Cliente</class>
-        <class>com.supermercado.model.Funcionario</class>
-        <class>com.supermercado.model.Venda</class>
-        <class>com.supermercado.model.ItemVenda</class>
+        <class>com.supermercado.entity.Produto</class>
+        <class>com.supermercado.entity.CategoriaProduto</class>
+        <class>com.supermercado.entity.Fornecedor</class>
+        <class>com.supermercado.entity.Cliente</class>
+        <class>com.supermercado.entity.Funcionario</class>
+        <class>com.supermercado.entity.Venda</class>
+        <class>com.supermercado.entity.ItemVenda</class>
 
         <properties>
             <!-- JDBC Settings -->
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/supermercado"/>
-            <property name="jakarta.persistence.jdbc.user" value="esp_user"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="123456"/>
 
             <!-- Hibernate Settings -->
