@@ -41,6 +41,38 @@
             .logo {
                 width: 100px;
             }
+
+            .no-spacing-panel td,
+            .no-spacing-panel tr,
+            .no-spacing-panelgrid,
+            .no-spacing-panelgrid td {
+                padding: 0 !important;
+                margin: 0 !important;
+                border: none !important;
+                vertical-align: top;
+            }
+
+            .no-margin {
+                margin: 0 !important;
+            }
+
+            .no-padding {
+                padding: 0 !important;
+            }
+
+            .tight-image {
+                margin-bottom: 0 !important;
+                padding: 0 !important;
+            }
+
+            .tight-datatable .ui-datatable {
+                margin: 0 !important;
+            }
+
+            .tight-panel {
+                margin-top: 0 !important;
+                padding: 0 !important;
+            }
         </style>
     </h:head>
 
@@ -50,15 +82,22 @@
                 <h:outputText value="CAIXA ABERTO" 
                               style="font-size:24px; font-weight:bold; color:#003366;" />
             </p:panel>
-            <p:panelGrid columns="3">
-                <h:graphicImage value="https://static.wikia.nocookie.net/animeverso/images/0/02/Le%C3%A3o_brabo.png/revision/latest?cb=20230804192844&amp;path-prefix=pt-br" 
-                                alt="Leão Brabo" 
-                                style="max-width: 100%; height: auto;" />
-                <h:panelGrid columns="1" cellpadding="4" id="dados">
+            <p:panelGrid columns="3" 
+             styleClass="no-spacing-panelgrid"
+             columnClasses="no-spacing-panel,no-spacing-panel,no-spacing-panel"
+             style="margin:0; padding:0; border-spacing:0;">
+                <h:graphicImage 
+                    value="#{empty pdvView.itemVenda.produto.uploadImagem 
+                             ? '/imagens/logo.png' 
+                             : pdvView.itemVenda.produto.uploadImagem}" 
+                    alt="Logo Santo Antônio Supermercado" 
+                    style="width: 300px; margin-bottom: 20px;" />
+
+                <h:panelGrid columns="1" cellpadding="4" id="dados" >
                     <!-- Código de Barras -->
                     <h:outputText value="CÓDIGO DE BARRAS" style="font-weight:bold; color:#003366;" />
                     <p:inputText value="#{pdvView.codigoBarras}" style="width:150px; text-align:right; font-weight:bold;">
-                        <p:ajax event="blur" listener="#{pdvView.onValorUnitarioInput}" 
+                        <p:ajax event="keyup" listener="#{pdvView.onValorUnitarioInput}" 
                                 update="@form" process="@this"/>
                     </p:inputText>
 
@@ -79,24 +118,49 @@
                         <f:convertNumber type="number" pattern="'R$' #,##0" />
                     </p:inputText>
                 </h:panelGrid>
-                <p:dataTable var="product" value="#{pdvView.produtos}">
-                    <p:column headerText="Code">
-                        <h:outputText value="#{product.id}" />
-                    </p:column>
+                <h:panelGrid columns="1" cellpadding="0" styleClass="no-spacing-panel no-padding">
+                    <p:dataTable id="dataTableProdutos" var="product" value="#{pdvView.produtos}" 
+                                 scrollable="true" scrollHeight="500" style="height:550px;" styleClass="tight-datatable">
 
-                    <p:column headerText="Name">
-                        <h:outputText value="#{product.nome}" />
-                    </p:column>
+                        <p:column headerText="Code">
+                            <h:outputText value="#{product.produto.codigoBarras}"/>
+                        </p:column>
 
-                    <p:column headerText="Category">
-                        <h:outputText value="#{product.preco}" />
-                    </p:column>
+                        <p:column headerText="Name">
+                            <h:outputText value="#{product.produto.nome}" />
+                        </p:column>
 
-                    <p:column headerText="Quantity">
-                        <h:outputText value="#{product.categoria}" />
-                    </p:column>
-                </p:dataTable>
+                        <p:column headerText="Quantidade">
+                            <h:outputText value="#{product.quantidade}" />
+                        </p:column>
 
+                        <p:column headerText="Preço Unitário">
+                            <h:outputText value="#{product.precoUnitario}">
+                                <f:convertNumber type="number" pattern="'R$' #,##0" />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Subtotal">
+                            <h:outputText value="#{product.subtotal}">
+                                <f:convertNumber type="number" pattern="'R$' #,##0" />
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                    <p:panel style="margin-top:10px; padding:10px" styleClass="tight-panel">
+                        <h:panelGrid columns="6" style="width:100%">
+                            <h:outputText value="Total:" style="font-weight:bold; text-align:right; width:100%"/>
+                            <h:outputText value="#{pdvView.totalQuantidade}" style="font-weight:bold; text-align:center; width:100%"/>
+                            <h:outputText value="Valor Unitário:" style="font-weight:bold; text-align:right; width:100%"/>
+                            <h:outputText value="#{pdvView.totalPrecoUnitario}" style="font-weight:bold; text-align:right; width:100%">
+                                <f:convertNumber type="number" pattern="'R$' #,##0"/>
+                            </h:outputText>
+                            <h:outputText value="Valor Total:" style="font-weight:bold; text-align:right; width:100%"/>
+                            <h:outputText value="#{pdvView.totalSubtotal}" style="font-weight:bold; text-align:right; width:100%">
+                                <f:convertNumber type="number" pattern="'R$' #,##0"/>
+                            </h:outputText>
+                        </h:panelGrid>
+                    </p:panel>
+                </h:panelGrid>
             </p:panelGrid>
         </h:form>
     </h:body>
