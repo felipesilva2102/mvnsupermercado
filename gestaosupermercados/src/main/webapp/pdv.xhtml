@@ -52,6 +52,14 @@
                 vertical-align: top;
             }
 
+            .no-spacing-panel {
+                width: 25% !important;
+            }
+
+            .largura50 {
+                width: 50% !important;
+            }
+
             .no-margin {
                 margin: 0 !important;
             }
@@ -83,9 +91,9 @@
                               style="font-size:24px; font-weight:bold; color:#003366;" />
             </p:panel>
             <p:panelGrid columns="3" 
-             styleClass="no-spacing-panelgrid"
-             columnClasses="no-spacing-panel,no-spacing-panel,no-spacing-panel"
-             style="margin:0; padding:0; border-spacing:0;">
+                         styleClass="no-spacing-panelgrid"
+                         columnClasses="no-spacing-panel,no-spacing-panel,largura50"
+                         style="margin:0; padding:0; border-spacing:0;">
                 <h:graphicImage 
                     value="#{empty pdvView.itemVenda.produto.uploadImagem 
                              ? '/imagens/logo.png' 
@@ -118,10 +126,9 @@
                         <f:convertNumber type="number" pattern="'R$' #,##0" />
                     </p:inputText>
                 </h:panelGrid>
-                <h:panelGrid columns="1" cellpadding="0" styleClass="no-spacing-panel no-padding">
+                <h:panelGrid columns="1" cellpadding="0">
                     <p:dataTable id="dataTableProdutos" var="product" value="#{pdvView.produtos}" 
-                                 scrollable="true" scrollHeight="500" style="height:550px;" styleClass="tight-datatable">
-
+                                 scrollable="true" scrollHeight="500" style="height: 550px;" styleClass="tight-datatable">
                         <p:column headerText="Code">
                             <h:outputText value="#{product.produto.codigoBarras}"/>
                         </p:column>
