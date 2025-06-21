@@ -85,6 +85,15 @@
     </h:head>
 
     <h:body>
+
+        <p:toolbar>
+            <p:toolbarGroup align="right">
+                <p:commandButton value="Home" icon="pi pi-home"
+                                 action="/home.xhtml?faces-redirect=true"
+                                 styleClass="ui-button-secondary" style="background: #007bff"/>
+            </p:toolbarGroup>
+        </p:toolbar>
+
         <h:form id="pdvForm">
             <p:panel style="text-align:center; background-color:#f4f8ff; border:1px solid #ccc; margin-bottom:10px;">
                 <h:outputText value="CAIXA ABERTO" 

@@ -21,6 +21,12 @@
                                          update=":formDialogs:dlgCliente" 
                                          oncomplete="PF('dlgCliente').show()" />
                     </p:toolbarGroup>
+
+                    <p:toolbarGroup align="right">
+                        <p:commandButton value="Home" icon="pi pi-home"
+                                         action="/home.xhtml?faces-redirect=true"
+                                         styleClass="ui-button-secondary" style="background: #007bff"/>
+                    </p:toolbarGroup>
                 </p:toolbar>
 
                 <p:dataTable id="dataTableClientes" var="cliente" value="#{clientesMBean.clientes}"
@@ -81,7 +87,7 @@
                         <p:inputText id="cpf" value="#{clientesMBean.clienteSelecionado.cpf}" required="true" label="CPF" />
 
                         <h:outputLabel for="telefone" value="Telefone:" />
-                        <p:inputText id="telefone" value="#{clientesMBean.clienteSelecionado.telefone}" />
+                        <p:inputMask id="telefone" value="#{clientesMBean.clienteSelecionado.telefone}" mask="(99) 99999-9999"/>
 
                         <h:outputLabel for="email" value="Email:" />
                         <p:inputText id="email" value="#{clientesMBean.clienteSelecionado.email}" />

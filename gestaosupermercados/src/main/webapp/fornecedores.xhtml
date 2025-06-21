@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Gestão de Fornecedores</title>
+    </h:head>
+
+    <h:body>
+        <h:form id="formFornecedor">
+            <p:growl id="msgs" showDetail="true" />
+
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Novo Fornecedor" icon="pi pi-plus"
+                                     actionListener="#{fornecedoresMBean.prepararNovo}"
+                                     update=":dialogos:dlgFornecedor"
+                                     oncomplete="PF('dlgFornecedor').show()" />
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+                    <p:commandButton value="Home" icon="pi pi-home"
+                                     action="/home.xhtml?faces-redirect=true"
+                                     style="background-color: #2196F3; border-color: #2196F3; color: white;" />
+                </p:toolbarGroup>
+            </p:toolbar>
+
+            <p:dataTable id="tabelaFornecedores" value="#{fornecedoresMBean.fornecedores}" var="forn"
+                         paginator="true" rows="10" rowKey="#{forn.id}"
+                         selectionMode="single" selection="#{fornecedoresMBean.fornecedor}"
+                         style="margin-top:10px">
+
+                <p:column headerText="Nome">
+                    <h:outputText value="#{forn.nome}" />
+                </p:column>
+
+                <p:column headerText="CNPJ">
+                    <h:outputText value="#{forn.cnpj}" />
+                </p:column>
+
+                <p:column headerText="Telefone">
+                    <h:outputText value="#{forn.telefone}" />
+                </p:column>
+
+                <p:column headerText="Email">
+                    <h:outputText value="#{forn.email}" />
+                </p:column>
+
+                <p:column headerText="Endereço">
+                    <h:outputText value="#{forn.endereco}" />
+                </p:column>
+
+                <p:column headerText="Ações" style="text-align:center;">
+                    <p:commandButton icon="pi pi-pencil" title="Editar"
+                                     actionListener="#{fornecedoresMBean.prepararEdicao(forn)}"
+                                     update=":dialogos:dlgFornecedor"
+                                     oncomplete="PF('dlgFornecedor').show()" />
+
+                    <p:commandButton icon="pi pi-trash" title="Excluir"
+                                     actionListener="#{fornecedoresMBean.excluir(forn)}"
+                                     update="formFornecedor:tabelaFornecedores formFornecedor:msgs"
+                                     style="margin-left:10px" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+        <!-- Diálogo para cadastro/edição -->
+        <h:form id="dialogos">
+            <p:dialog id="dlgFornecedor" header="Cadastro de Fornecedor" widgetVar="dlgFornecedor"
+                      modal="true" closable="true" resizable="false" responsive="true">
+
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <h:outputLabel for="nome" value="Nome:" />
+                    <p:inputText id="nome" value="#{fornecedoresMBean.fornecedor.nome}" required="true" />
+
+                    <h:outputLabel for="cnpj" value="CNPJ:" />
+                    <p:inputText id="cnpj" value="#{fornecedoresMBean.fornecedor.cnpj}" required="true" />
+
+                    <h:outputLabel for="telefone" value="Telefone:" />
+                    <p:inputMask id="telefone" value="#{fornecedoresMBean.fornecedor.telefone}" mask="(99) 99999-9999" />
+
+                    <h:outputLabel for="email" value="Email:" />
+                    <p:inputText id="email" value="#{fornecedoresMBean.fornecedor.email}" />
+
+                    <h:outputLabel for="endereco" value="Endereço:" />
+                    <p:inputText id="endereco" value="#{fornecedoresMBean.fornecedor.endereco}" />
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Salvar" actionListener="#{fornecedoresMBean.salvar}"
+                                         process="dlgFornecedor @this"
+                                         update=":formFornecedor:tabelaFornecedores :formFornecedor:msgs"
+                                         oncomplete="if (!args.validationFailed) PF('dlgFornecedor').hide()" />
+
+                        <p:commandButton value="Cancelar" onclick="PF('dlgFornecedor').hide(); return false;" />
+                    </f:facet>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+

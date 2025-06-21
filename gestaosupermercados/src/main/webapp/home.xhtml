@@ -172,10 +172,10 @@
                         <i class="pi pi-chart-line"></i>
                         <span>Resumo</span>
                     </div>
-                    <div class="shortcut">
-                        <i class="pi pi-shopping-bag"></i>
-                        <span>Editar Loja</span>
-                    </div>
+                    <p:commandLink action="#{fornecedoresMBean.redirecionar()}" styleClass="shortcut" style="text-decoration:none;">
+                        <i class="pi pi-user-plus"></i>
+                        <span>+ Fornecedores</span>
+                    </p:commandLink>
                     <div class="shortcut">
                         <i class="pi pi-credit-card"></i>
                         <span>Pagamentos</span>
@@ -201,7 +201,7 @@
                 <div class="footer-dock">
                     <p:commandButton value="Caixa" icon="pi pi-briefcase" action="#{pdvView.redirecionar()}" styleClass="dock-btn" />
                     <p:commandButton value="Delivery" icon="pi pi-send" action="#{menuView.irParaDelivery}" styleClass="dock-btn" />
-                    <p:commandButton value="Vendas" icon="pi pi-shopping-cart" action="#{produtoMBean.redirecionar()}" styleClass="dock-btn" />
+                    <p:commandButton value="Vendas" icon="pi pi-shopping-cart" action="#{asd}" styleClass="dock-btn" />
                     <p:commandButton value="Livro Caixa" icon="pi pi-book" action="#{menuView.irParaLivroCaixa}" styleClass="dock-btn" />
                     <p:commandButton value="Financeiro" icon="pi pi-dollar" action="#{menuView.irParaFinanceiro}" styleClass="dock-btn" />
                     <p:commandButton value="Serviços" icon="pi pi-briefcase" action="#{menuView.irParaServicos}" styleClass="dock-btn" />
