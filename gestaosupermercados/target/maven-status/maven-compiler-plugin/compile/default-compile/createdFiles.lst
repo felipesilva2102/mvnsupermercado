@@ -22,6 +22,7 @@ com\supermercado\entity\Fornecedor.class
 com\supermercado\service\VendaService.class
 com\supermercado\repository\GenericRepository.class
 com\supermercado\service\FornecedorService.class
+my\supermercado\converter\FornecedorConverter.class
 com\supermercado\beans\PdvView.class
 com\supermercado\entity\CategoriaProduto$values.class
 com\supermercado\repository\FuncionarioRepository.class

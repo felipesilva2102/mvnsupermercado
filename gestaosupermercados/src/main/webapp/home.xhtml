@@ -180,14 +180,14 @@
                         <i class="pi pi-credit-card"></i>
                         <span>Pagamentos</span>
                     </div>
-                    <div class="shortcut">
+                    <p:commandLink action="#{produtoMBean.redirecionar()}" styleClass="shortcut" style="text-decoration:none;">
                         <i class="pi pi-tag"></i>
                         <span>+ Produto</span>
-                    </div>
-                    <h:commandLink action="#{clientesMBean.redirecionar()}" styleClass="shortcut" style="text-decoration:none;">
+                    </p:commandLink>
+                    <p:commandLink action="#{clientesMBean.redirecionar()}" styleClass="shortcut" style="text-decoration:none;">
                         <i class="pi pi-users"></i>
                         <span>+ Cliente</span>
-                    </h:commandLink>
+                    </p:commandLink>
 
                     <div class="shortcut">
                         <i class="pi pi-truck"></i>
@@ -199,9 +199,9 @@
             <!-- RODAPÉ DOCK -->
             <div class="footer-dock">
                 <div class="footer-dock">
-                    <p:commandButton value="Caixa" icon="pi pi-briefcase" action="#{pdvView.redirecionar}" styleClass="dock-btn" />
+                    <p:commandButton value="Caixa" icon="pi pi-briefcase" action="#{pdvView.redirecionar()}" styleClass="dock-btn" />
                     <p:commandButton value="Delivery" icon="pi pi-send" action="#{menuView.irParaDelivery}" styleClass="dock-btn" />
-                    <p:commandButton value="Vendas" icon="pi pi-shopping-cart" action="#{menuView.irParaVendas}" styleClass="dock-btn" />
+                    <p:commandButton value="Vendas" icon="pi pi-shopping-cart" action="#{produtoMBean.redirecionar()}" styleClass="dock-btn" />
                     <p:commandButton value="Livro Caixa" icon="pi pi-book" action="#{menuView.irParaLivroCaixa}" styleClass="dock-btn" />
                     <p:commandButton value="Financeiro" icon="pi pi-dollar" action="#{menuView.irParaFinanceiro}" styleClass="dock-btn" />
                     <p:commandButton value="Serviços" icon="pi pi-briefcase" action="#{menuView.irParaServicos}" styleClass="dock-btn" />

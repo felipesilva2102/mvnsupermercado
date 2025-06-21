@@ -25,49 +25,9 @@ import lombok.Setter;
  */
 @Named
 @ViewScoped
-//@Getter
-//@Setter
+@Getter
+@Setter
 public class ClientesMBean implements Serializable {
-
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-
-    public Cliente getClienteSelecionado() {
-        return clienteSelecionado;
-    }
-
-    public void setClienteSelecionado(Cliente clienteSelecionado) {
-        this.clienteSelecionado = clienteSelecionado;
-    }
-
-    public Cliente getClienteParaExcluir() {
-        return clienteParaExcluir;
-    }
-
-    public void setClienteParaExcluir(Cliente clienteParaExcluir) {
-        this.clienteParaExcluir = clienteParaExcluir;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public ClienteService getClienteService() {
-        return clienteService;
-    }
-
-    public void setClienteService(ClienteService clienteService) {
-        this.clienteService = clienteService;
-    }
 
     private List<Cliente> clientes = new ArrayList<>();
     private Cliente clienteSelecionado = new Cliente();
