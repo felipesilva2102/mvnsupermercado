@@ -6,6 +6,7 @@ com\mycompany\gestaosupermercados\resources\JakartaEE11Resource.class
 com\mycompany\gestaosupermercados\JakartaRestConfiguration.class
 com\supermercado\entity\CategoriaProduto.class
 com\supermercado\service\GenericService.class
+com\supermercado\beans\ClientesMBean.class
 com\supermercado\beans\VendaMBean.class
 com\supermercado\repository\VendaRepository.class
 com\supermercado\entity\Funcionario.class

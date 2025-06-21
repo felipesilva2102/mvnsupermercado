@@ -4,6 +4,7 @@
  */
 package com.supermercado.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,14 +25,19 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String nome;
 
+    @Column
     private String cpf;
 
+    @Column
     private String telefone;
 
+    @Column
     private String email;
 
+    @Column
     private String endereco;
     
 }
